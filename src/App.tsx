@@ -14,8 +14,12 @@ import './App.css';
 import Navbar from './components/Navbar'
 // import { Box, Container, Stack } from '@mui/material';
 import Home from './components/Home'
-import { BrowserRouter,Route, Routes } from 'react-router-dom';
+import { BrowserRouter,Route, RouterProvider, Routes } from 'react-router-dom';
 import { BrowserRouter as Router } from "react-router-dom";
+import AddQuestion from './components/AddQuestion';
+import { Update } from '@mui/icons-material';
+import UpdateQuestion from './components/UpdateQuestion';
+
 
 function App() {
   return (
@@ -31,11 +35,14 @@ function App() {
 
     </Box> */}
 
-<Navbar/>
+      <Navbar/>
         <Routes>
             <Route path="/" element={<Home/>}/>
-        </Routes>
-      
+            <Route path="/products" element={<AddQuestion/>}/>
+            <Route path="/pricing" element={<UpdateQuestion/>}/>
+            <Route path="/blog" element={<UpdateQuestion/>}/>
+
+        </Routes> 
      </>
   );
 }

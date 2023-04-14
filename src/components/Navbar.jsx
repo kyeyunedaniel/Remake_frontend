@@ -61,7 +61,7 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 
-import {Link} from 'react-router-dom';
+import {Link, NavLink} from 'react-router-dom';
 
 const pages = ['Products', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -138,14 +138,16 @@ function Navbar() {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                <MenuItem key={page}  component={Link}
+                to={`/${page}`} onClick={handleCloseNavMenu}>
+                  
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
 
-          
+
           <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
           <Typography
             variant="h5"
@@ -169,6 +171,11 @@ function Navbar() {
             {pages.map((page) => (
               <Button
                 key={page}
+
+                //this adds the links corresponding to the pages required 
+                component={Link}
+                to={`/${page}`}
+
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
