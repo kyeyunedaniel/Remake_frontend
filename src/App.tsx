@@ -1,5 +1,5 @@
-import React from 'react';
-import logo from './logo.svg';
+// import React from 'react';
+// import logo from './logo.svg';
 import './App.css';
 // import { MuiTypography } from './components/muiTypography'
 
@@ -8,26 +8,35 @@ import './App.css';
 // import IconButton from '@mui/material/IconButton';
 // import SettingsIcon from '@mui/icons-material/Settings';
 // import { green } from '@mui/material/colors';
-import Sidebar from './components/Sidebar'
-import Feed from './components/Feed'
-import Rightbar from './components/Rightbar'
+// import Sidebar from './components/Sidebar'
+// import Feed from './components/Feed'
+// import Rightbar from './components/Rightbar'
 import Navbar from './components/Navbar'
-import { Box, Container, Stack } from '@mui/material';
+// import { Box, Container, Stack } from '@mui/material';
+import Home from './components/Home'
+import { BrowserRouter,Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router } from "react-router-dom";
 
 function App() {
   return (
-    <Box>
-      <Navbar/>
+    <>
+    {/* <Box>
+      // <Navbar/> */}
       {/* <br/> */}
-      <Stack direction ="row" spacing = {2} justifyContent="space-between">
+      {/* <Stack direction ="row" spacing = {2} justifyContent="space-between">
       <Sidebar/>
       <Feed/>
       <Rightbar/>
       </Stack>
 
-    </Box>
+    </Box> */}
+
+<Navbar/>
+        <Routes>
+            <Route path="/" element={<Home/>}/>
+        </Routes>
       
-    // </div>
+     </>
   );
 }
 
