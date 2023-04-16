@@ -16,13 +16,15 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { useState } from 'react';
 
 function UpdateQuestion() {
+  <meta name="csrf-token" content="{{ csrf_token() }}"></meta>
   const[name, setName]= useState("");
   const[password,setPassword]=useState("")
   const[email, setEmail]=useState("")
+  
   async function signUp(){
     // console.warn(name,email,password)
-    if(name!=null & email!=null & password!==null) 
-    {
+    // if(!=null & email!=null & password!==null) 
+    // {
       // console.warn(name,email,password) 
       let user_data ={name,email,password}
       console.warn(user_data)
@@ -31,14 +33,17 @@ function UpdateQuestion() {
       body:JSON.stringify(user_data), 
       headers:
       {
-        // "Content-Type":"application/json", 
-        "Accept":"application/json"
+        "Content-Type":"application/json", 
+        "Accept":"application/json",
+        'X-CSRF-TOKEN': document.head.querySelector('meta[name="csrf-token"]')?.getAttribute('content'),
       }})
 
       result = await result.json()
       console.warn("result",result)
-    }
+    // }
   }
+
+
 
   const [showPassword, setShowPassword] = React.useState(false);
 
@@ -57,10 +62,10 @@ function UpdateQuestion() {
       autoComplete="off"
     >  
       <div>
-      <TextField id="name" label="Name" onChange ={(e)=>setName(e.target.value)} type="text" variant="outlined" size="small" required/>
+      <TextField id="name" label="Name" value={name} onChange ={(e)=>setName(e.target.value)} type="text" variant="outlined" size="small" required/>
       </div> 
       <div>
-      <TextField id="email" label="Email" onChange ={(e)=>setEmail(e.target.value)}type="email" variant="outlined" size="small" required/>
+      <TextField id="email" label="Email" value={email} onChange ={(e)=>setEmail(e.target.value)}type="email" variant="outlined" size="small" required/>
       </div>
 
     
@@ -82,7 +87,7 @@ function UpdateQuestion() {
               </InputAdornment>
             }
             label="Password"
-            size="small"
+            size="small" value={password}
             onChange ={(e)=>setPassword(e.target.value)}
             required
           />
